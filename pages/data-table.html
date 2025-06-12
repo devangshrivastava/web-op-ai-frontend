@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="page-id" content="data-table" />
+  <title>Data Table - AI Playground</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full">
+  <div id="navbar"></div>
+  <main class="prose prose-lg mx-auto mt-12 px-4">
+    <h1 class="text-3xl font-bold">Data Table</h1>
+
+    <section class="mt-6">
+      <h2 class="text-2xl font-semibold">Use Case</h2>
+      <p>
+        Demonstrate table rendering, filtering, and row visibility toggling.
+        Agents can input filter terms and verify row counts via console
+        logs for data-driven test scenarios.
+      </p>
+    </section>
+
+    <div class="mt-8">
+      <input
+        id="tableFilter"
+        data-type="text"
+        data-actions="input,clear"
+        placeholder="Filter rows..."
+        aria-label="Filter table rows"
+        class="border rounded-md px-3 py-2 w-full"
+        type="text"
+      />
+    </div>
+
+    <table id="dataTable" class="mt-4 w-full table-auto border-collapse">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border px-4 py-2">ID</th>
+          <th class="border px-4 py-2">Name</th>
+          <th class="border px-4 py-2">Value</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

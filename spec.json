@@ -1,0 +1,114 @@
+{
+  "pages": {
+    "/index.html": {
+      "url": "/index.html",
+      "components": {}
+    },
+    "/components/navbar.html": {
+      "url": "/components/navbar.html",
+      "components": {}
+    },
+    "/pages/catalog.html": {
+      "url": "/pages/catalog.html",
+      "components": {
+        "filterDropdown": {
+          "type": "select",
+          "actions": [
+            "select"
+          ],
+          "options": [
+            "All",
+            "Red",
+            "Blue",
+            "Green"
+          ]
+        },
+        "addItemBtn": {
+          "type": "button",
+          "actions": [
+            "click"
+          ]
+        }
+      }
+    },
+    "/pages/settings.html": {
+      "url": "/pages/settings.html",
+      "components": {
+        "volumeSlider": {
+          "type": "slider",
+          "actions": [
+            "input"
+          ]
+        },
+        "notificationsToggle": {
+          "type": "checkbox",
+          "actions": [
+            "change"
+          ]
+        },
+        "saveSettingsBtn": {
+          "type": "button",
+          "actions": [
+            "click"
+          ]
+        }
+      }
+    },
+    "/pages/home.html": {
+      "url": "/pages/home.html",
+      "components": {
+        "dummyForm": {
+          "type": "form",
+          "actions": [
+            "submit"
+          ]
+        },
+        "nameInput": {
+          "type": "text",
+          "actions": [
+            "type",
+            "clear"
+          ],
+          "validations": [
+            "required",
+            "pattern:[A-Za-z ]+"
+          ]
+        },
+        "dinoInput": {
+          "type": "text",
+          "actions": [
+            "type",
+            "clear"
+          ],
+          "validations": [
+            "required",
+            "pattern:[A-Za-z ]+"
+          ]
+        },
+        "marvelInput": {
+          "type": "text",
+          "actions": [
+            "type",
+            "clear"
+          ],
+          "validations": [
+            "required",
+            "pattern:[A-Za-z ]+"
+          ]
+        }
+      }
+    },
+    "/pages/data-table.html": {
+      "url": "/pages/data-table.html",
+      "components": {
+        "tableFilter": {
+          "type": "text",
+          "actions": [
+            "input",
+            "clear"
+          ]
+        }
+      }
+    }
+  }
+}

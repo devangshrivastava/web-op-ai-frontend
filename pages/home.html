@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="page-id" content="home" />
+  <title>Home - AI Playground</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full">
+  <div id="navbar"></div>
+  <main class="prose prose-lg mx-auto mt-12 px-4">
+    <h1 class="text-3xl font-bold">Home</h1>
+
+    <section class="mt-6">
+      <h2 class="text-2xl font-semibold">Use Case</h2>
+      <p>
+        A dummy user input form to collect visitor details: name, favorite dinosaur,
+        and favorite Marvel character. AI agents can fill out and submit this form,
+        with all data logged to the console for testing.
+      </p>
+    </section>
+
+    <form
+      id="dummyForm"
+      data-type="form"
+      data-actions="submit"
+      class="mt-8 space-y-4"
+    >
+      <div>
+        <label for="nameInput" class="block text-lg font-medium">Name:</label>
+        <input
+          id="nameInput"
+          data-type="text"
+          data-actions="type,clear"
+          data-validations="required,pattern:[A-Za-z ]+"
+          type="text"
+          placeholder="Enter your name"
+          class="mt-1 block w-full border rounded-md px-3 py-2"
+          required
+        />
+      </div>
+      <div>
+        <label for="dinoInput" class="block text-lg font-medium">Favorite Dinosaur:</label>
+        <input
+          id="dinoInput"
+          data-type="text"
+          data-actions="type,clear"
+          data-validations="required,pattern:[A-Za-z ]+"
+          type="text"
+          placeholder="e.g. Tyrannosaurus Rex"
+          class="mt-1 block w-full border rounded-md px-3 py-2"
+          required
+        />
+      </div>
+      <div>
+        <label for="marvelInput" class="block text-lg font-medium">Favorite Marvel Character:</label>
+        <input
+          id="marvelInput"
+          data-type="text"
+          data-actions="type,clear"
+          data-validations="required,pattern:[A-Za-z ]+"
+          type="text"
+          placeholder="e.g. Iron Man"
+          class="mt-1 block w-full border rounded-md px-3 py-2"
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        data-type="button"
+        data-actions="click"
+        aria-label="Submit dummy form"
+        class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600"
+      >
+        Submit
+      </button>
+    </form>
+  </main>
+  <script type="module">
+    // Load shared navbar
+    async function loadNavbar() {
+      const container = document.getElementById('navbar');
+      if (!container) return;
+      const html = await fetch('/components/navbar.html').then(r => r.text());
+      container.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadNavbar();
+
+      // Dummy form submission
+      const dummyForm = document.getElementById('dummyForm');
+      dummyForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('nameInput').value;
+        const dinosaur = document.getElementById('dinoInput').value;
+        const marvel = document.getElementById('marvelInput').value;
+        console.log({
+          page: '/pages/home.html',
+          action: 'submitForm',
+          data: { name, dinosaur, marvel }
+        });
+        dummyForm.reset();
+      });
+    });
+  </script>
+</body>
+</html>

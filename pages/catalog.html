@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="page-id" content="catalog" />
+  <title>Catalog - AI Playground</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full">
+  <div id="navbar"></div>
+  <main class="prose prose-lg mx-auto mt-12 px-4">
+    <h1 class="text-3xl font-bold">Catalog</h1>
+
+    <section class="mt-6">
+      <h2 class="text-2xl font-semibold">Use Case</h2>
+      <p>
+        Showcase filtering and dynamic list addition. AI agents select
+        filter options or add items, with each action logged to console to
+        simulate CRUD operations.
+      </p>
+    </section>
+
+    <div class="mt-8 flex space-x-4 items-center">
+      <select
+        id="filterDropdown"
+        data-type="select"
+        data-actions="select"
+        data-options="All,Red,Blue,Green"
+        aria-label="Filter items by color"
+        class="border rounded-md px-3 py-2"
+      >
+        <option>All</option>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Green</option>
+      </select>
+
+      <button
+        id="addItemBtn"
+        data-type="button"
+        data-actions="click"
+        aria-label="Add a random item"
+        class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600"
+      >
+        Add Random Item
+      </button>
+    </div>
+
+    <ul id="itemList" class="mt-4 list-disc pl-5"></ul>
+  </main>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

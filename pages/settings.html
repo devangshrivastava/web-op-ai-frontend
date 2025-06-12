@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="page-id" content="settings" />
+  <title>Settings - AI Playground</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full">
+  <div id="navbar"></div>
+  <main class="prose prose-lg mx-auto mt-12 px-4">
+    <h1 class="text-3xl font-bold">Settings</h1>
+
+    <section class="mt-6">
+      <h2 class="text-2xl font-semibold">Use Case</h2>
+      <p>
+        Simulate toggling application preferences. Agents can adjust volume
+        sliders and enable/disable notifications, with save operations
+        logged for downstream validation.
+      </p>
+    </section>
+
+    <div class="mt-8 space-y-4">
+      <label class="flex items-center space-x-2">
+        <span>Volume:</span>
+        <input
+          id="volumeSlider"
+          data-type="slider"
+          data-actions="input"
+          min="0"
+          max="100"
+          type="range"
+          aria-label="Volume control"
+          class="form-range"
+        />
+      </label>
+
+      <label class="flex items-center space-x-2">
+        <input
+          id="notificationsToggle"
+          data-type="checkbox"
+          data-actions="change"
+          type="checkbox"
+          aria-label="Enable notifications"
+          class="form-checkbox h-5 w-5 text-indigo-600"
+        />
+        <span>Enable Notifications</span>
+      </label>
+
+      <button
+        id="saveSettingsBtn"
+        data-type="button"
+        data-actions="click"
+        aria-label="Save settings"
+        class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600"
+      >
+        Save Settings
+      </button>
+    </div>
+  </main>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>
