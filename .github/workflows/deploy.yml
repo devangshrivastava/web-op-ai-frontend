@@ -1,0 +1,50 @@
+# GitHub Actions workflow to deploy the static AI Playground site to GitHub Pages
+# Uses the official Pages deployment actions (v3/v1) and actions/checkout v4
+# Triggers on pushes to the main branch
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read                # for checkout
+  pages: write                 # to deploy to GitHub Pages
+  id-token: write              # for actions/deploy-pages
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. (Optional) If you have a build step, insert here
+      # e.g., build Tailwind CSS, run bundler, etc.
+      # - name: Install dependencies
+      #   run: npm ci
+      # - name: Build site
+      #   run: npm run build
+
+      # 3. Configure GitHub Pages
+      - name: Configure Pages
+        uses: actions/configure-pages@v3
+
+      # 4. Upload site artifacts (the entire repo or 'build' folder)
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: |
+            .
+            pages/
+            components/
+            js/
+            index.html
+
+      # 5. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
