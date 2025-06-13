@@ -1,7 +1,3 @@
-# GitHub Actions workflow to deploy the static AI Playground site to GitHub Pages
-# Uses the official Pages deployment actions (v3/v1) and actions/checkout v4
-# Triggers on pushes to the main branch
-
 name: Deploy to GitHub Pages
 
 on:
@@ -10,21 +6,20 @@ on:
       - main
 
 permissions:
-  contents: read                # for checkout
-  pages: write                 # to deploy to GitHub Pages
-  id-token: write              # for actions/deploy-pages
+  contents: read       # for checkout
+  pages: write         # to push to GitHub Pages
+  id-token: write      # required by deploy-pages@v4
 
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository
-      - name: Checkout repository
+      # 1. Checkout the repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. (Optional) If you have a build step, insert here
-      # e.g., build Tailwind CSS, run bundler, etc.
+      # 2. (Optional) Build step, e.g. Tailwind, bundler, etc.
       # - name: Install dependencies
       #   run: npm ci
       # - name: Build site
@@ -32,19 +27,19 @@ jobs:
 
       # 3. Configure GitHub Pages
       - name: Configure Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5  # latest v5 :contentReference[oaicite:0]{index=0}
 
-      # 4. Upload site artifacts (the entire repo or 'build' folder)
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v1
+      # 4. Upload site files as Pages artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3  # v3 is the current stable :contentReference[oaicite:1]{index=1}
         with:
           path: |
-            .
+            index.html
+            spec.json
             pages/
             components/
             js/
-            index.html
 
       # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4        # deploy-pages v4 is the required version :contentReference[oaicite:2]{index=2}
