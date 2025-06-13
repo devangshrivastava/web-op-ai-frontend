@@ -11,34 +11,24 @@ permissions:
   id-token: write
 
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 1. Checkout the repo
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. (Optional) Build step, e.g. Tailwind, bundler, etc.
-      # - name: Install dependencies
-      #   run: npm ci
-      # - name: Build site
-      #   run: npm run build
-
-      # 3. Configure GitHub Pages
-      - name: Configure Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 4. Upload site files as Pages artifact
-      - name: Upload Pages artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: '.'
 
-      # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
