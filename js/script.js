@@ -4,13 +4,21 @@
 async function loadNavbar() {
   const container = document.getElementById('navbar');
   if (!container) return;
+
+  // Determine current page from pathname
+  const isIndex = window.location.pathname.endsWith('/index.html') || window.location.pathname === '/ai-playground/';
+
+  // Choose correct path to navbar.html
+  const navbarPath = isIndex ? './components/navbar.html' : '../components/navbar.html';
+
   try {
-    const html = await fetch('../components/navbar.html').then(r => r.text());
+    const html = await fetch(navbarPath).then(r => r.text());
     container.innerHTML = html;
   } catch (err) {
     console.error('Failed to load navbar:', err);
   }
 }
+
 
 // 2. Catalog page logic
 function initCatalogPage() {
