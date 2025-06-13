@@ -1,0 +1,161 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "AI Playground Static Site API",
+    "version": "1.0.0",
+    "description": "This OpenAPI specification documents the static endpoints of the AI Playground website. Each endpoint corresponds to an HTML page or asset designed for AI-driven interaction and human exploration."
+  },
+  "servers": [
+    {
+      "url": "https://{host}",
+      "description": "Production server",
+      "variables": {
+        "host": {
+          "default": "example.com"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/index.html": {
+      "get": {
+        "summary": "Main Landing Page",
+        "description": "Serves the homepage introducing the AI Playground. Contains overview, author info, and links to all other pages.",
+        "responses": {
+          "200": {
+            "description": "HTML content for main page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/home.html": {
+      "get": {
+        "summary": "Dummy Data Collection Form",
+        "description": "Provides a form for collecting user inputs: name, favorite dinosaur, and favorite Marvel character. AI agents fill out and submit this form; form data is console.logged. Validations: fields are required and must match name-like patterns.",
+        "responses": {
+          "200": {
+            "description": "HTML content for home page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/catalog.html": {
+      "get": {
+        "summary": "Catalog Filter and Item Addition",
+        "description": "Showcases a select dropdown to filter items by color (All, Red, Blue, Green) and a button to add a random item to the list. Use cases: AI agents select colors to repopulate the list; click 'Add Random Item' to simulate create operations. Actions are logged via console.",
+        "responses": {
+          "200": {
+            "description": "HTML content for catalog page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/settings.html": {
+      "get": {
+        "summary": "Settings Panel",
+        "description": "Contains controls for adjusting application preferences: volume slider (0–100), notifications toggle (checkbox), and 'Save Settings' button. AI agents move the slider, toggle notifications, and click 'Save Settings'; all events console.log their state.",
+        "responses": {
+          "200": {
+            "description": "HTML content for settings page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data-table.html": {
+      "get": {
+        "summary": "Data Table with Filtering",
+        "description": "Renders a table of 30 rows (ID, Name, Value) and an input for live filtering. AI agents type filter terms to hide/show rows and use the assert helper to verify row counts.",
+        "responses": {
+          "200": {
+            "description": "HTML content for data table page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spec.json": {
+      "get": {
+        "summary": "AI Playground Specification",
+        "description": "Provides the machine-readable spec.json generated from data-* annotations. Describes each page, component IDs, types, actions, options, and validations. AI backend and Playwright runners fetch this to know available controls.",
+        "responses": {
+          "200": {
+            "description": "JSON spec for the site",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pages": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "url": { "type": "string" },
+                          "components": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "object",
+                              "properties": {
+                                "type": { "type": "string" },
+                                "actions": {
+                                  "type": "array",
+                                  "items": { "type": "string" }
+                                },
+                                "options": {
+                                  "type": "array",
+                                  "items": { "type": "string" }
+                                },
+                                "validations": {
+                                  "type": "array",
+                                  "items": { "type": "string" }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
