@@ -77,33 +77,6 @@
       </button>
     </form>
   </main>
-  <script type="module">
-    // Load shared navbar
-    async function loadNavbar() {
-      const container = document.getElementById('navbar');
-      if (!container) return;
-      const html = await fetch('/components/navbar.html').then(r => r.text());
-      container.innerHTML = html;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadNavbar();
-
-      // Dummy form submission
-      const dummyForm = document.getElementById('dummyForm');
-      dummyForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const name = document.getElementById('nameInput').value;
-        const dinosaur = document.getElementById('dinoInput').value;
-        const marvel = document.getElementById('marvelInput').value;
-        console.log({
-          page: '/pages/home.html',
-          action: 'submitForm',
-          data: { name, dinosaur, marvel }
-        });
-        dummyForm.reset();
-      });
-    });
-  </script>
+  <script type="module" src="../js/script.js"></script>
 </body>
 </html>
