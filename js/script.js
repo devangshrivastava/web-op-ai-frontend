@@ -5,7 +5,7 @@ async function loadNavbar() {
   const container = document.getElementById('navbar');
   if (!container) return;
   try {
-    const html = await fetch('/components/navbar.html').then(r => r.text());
+    const html = await fetch('../components/navbar.html').then(r => r.text());
     container.innerHTML = html;
   } catch (err) {
     console.error('Failed to load navbar:', err);
@@ -21,7 +21,7 @@ function initCatalogPage() {
   if (filterDropdown) {
     filterDropdown.addEventListener('change', e => {
       const choice = e.target.value;
-      console.log({ page: '/pages/catalog.html', action: 'selectFilter', data: choice });
+      console.log({ page: './pages/catalog.html', action: 'selectFilter', data: choice });
       itemList.innerHTML = '';
     });
   }
@@ -33,7 +33,7 @@ function initCatalogPage() {
       li.textContent = newItem;
       itemList.appendChild(li);
       console.log({
-        page: '/pages/catalog.html',
+        page: './pages/catalog.html',
         action: 'clickAddItem',
         data: newItem
       });
@@ -50,7 +50,7 @@ function initSettingsPage() {
   if (volumeSlider) {
     volumeSlider.addEventListener('input', e => {
       console.log({
-        page: '/pages/settings.html',
+        page: './pages/settings.html',
         action: 'changeVolume',
         data: e.target.value
       });
@@ -60,7 +60,7 @@ function initSettingsPage() {
   if (notificationsToggle) {
     notificationsToggle.addEventListener('change', e => {
       console.log({
-        page: '/pages/settings.html',
+        page: './pages/settings.html',
         action: 'toggleNotifications',
         data: e.target.checked
       });
@@ -72,7 +72,7 @@ function initSettingsPage() {
       const volume = volumeSlider?.value ?? null;
       const notifications = notificationsToggle?.checked ?? null;
       console.log({
-        page: '/pages/settings.html',
+        page: './pages/settings.html',
         action: 'saveSettings',
         data: { volume, notifications }
       });
@@ -112,7 +112,7 @@ function initDataTablePage() {
         r.style.display = r.textContent.toLowerCase().includes(term) ? '' : 'none';
       });
       console.log({
-        page: '/pages/data-table.html',
+        page: './pages/data-table.html',
         action: 'filterTable',
         data: term
       });
