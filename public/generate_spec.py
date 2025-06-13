@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 
 # Configuration
 ROOT_DIR = os.getcwd()
-PAGES_DIR = os.path.join(ROOT_DIR, 'pages')
-COMPONENTS_DIR = os.path.join(ROOT_DIR, 'components')
+PAGES_DIR = ROOT_DIR
+COMPONENTS_DIR = ROOT_DIR
 OUTPUT_FILE = os.path.join(ROOT_DIR, 'spec.json')
 
 spec = {"pages": {}}
@@ -53,13 +53,13 @@ def process_html(file_path, url_path):
 process_html(os.path.join(ROOT_DIR, 'index.html'), '/index.html')
 
 # Process navbar (components/navbar.html)
-process_html(os.path.join(COMPONENTS_DIR, 'navbar.html'), '/components/navbar.html')
+process_html(os.path.join(COMPONENTS_DIR, 'navbar.html'), '/navbar.html')
 
 # Process all pages in /pages directory
 for filename in os.listdir(PAGES_DIR):
     if filename.endswith('.html'):
         file_path = os.path.join(PAGES_DIR, filename)
-        url_path = f'/pages/{filename}'
+        url_path = f'/{filename}'
         process_html(file_path, url_path)
 
 # Write to spec.json

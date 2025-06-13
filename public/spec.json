@@ -4,12 +4,12 @@
       "url": "/index.html",
       "components": {}
     },
-    "/components/navbar.html": {
-      "url": "/components/navbar.html",
+    "/navbar.html": {
+      "url": "/navbar.html",
       "components": {}
     },
-    "/pages/catalog.html": {
-      "url": "/pages/catalog.html",
+    "/catalog.html": {
+      "url": "/catalog.html",
       "components": {
         "filterDropdown": {
           "type": "select",
@@ -31,8 +31,8 @@
         }
       }
     },
-    "/pages/settings.html": {
-      "url": "/pages/settings.html",
+    "/settings.html": {
+      "url": "/settings.html",
       "components": {
         "volumeSlider": {
           "type": "slider",
@@ -54,8 +54,8 @@
         }
       }
     },
-    "/pages/home.html": {
-      "url": "/pages/home.html",
+    "/home.html": {
+      "url": "/home.html",
       "components": {
         "dummyForm": {
           "type": "form",
@@ -98,8 +98,8 @@
         }
       }
     },
-    "/pages/data-table.html": {
-      "url": "/pages/data-table.html",
+    "/data-table.html": {
+      "url": "/data-table.html",
       "components": {
         "tableFilter": {
           "type": "text",
